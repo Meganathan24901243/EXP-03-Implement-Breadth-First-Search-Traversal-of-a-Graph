@@ -131,6 +131,7 @@ queue.append(start)
 path.append(start)
 
 # traversal
+```
 while queue:
     node = queue.popleft()
     for neighbour in graph[node]:
@@ -139,6 +140,7 @@ while queue:
             queue.append(neighbour)
             path.append(neighbour)
 return path
+```
 # ---Input section---
 graph = defaultdict(list) n, e = map(int, input().split()) # n = nodes, e = edges
 
