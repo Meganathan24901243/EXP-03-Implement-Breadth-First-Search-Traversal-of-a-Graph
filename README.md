@@ -121,4 +121,34 @@ Sample Input :
 2 4 
 3 4 
 Sample Output: 
-['0', '1', '2', '3', '4'] 
+['0', '1', '2', '3', '4']
+# BFS function
+def bfs(graph, start): visited = defaultdict(bool) path = [] queue = deque()
+
+# start node
+visited[start] = True
+queue.append(start)
+path.append(start)
+
+# traversal
+while queue:
+    node = queue.popleft()
+    for neighbour in graph[node]:
+        if not visited[neighbour]:
+            visited[neighbour] = True
+            queue.append(neighbour)
+            path.append(neighbour)
+return path
+# ---Input section---
+graph = defaultdict(list) n, e = map(int, input().split()) # n = nodes, e = edges
+
+for _ in range(e): u, v = input().split() graph[u].append(v) graph[v].append(u) # undirected graph
+
+# Sort adjacency lists to maintain consistent orderfor key in graph:
+graph[key].sort()
+
+# choose first node in input as start
+start = list(graph.keys())[0]
+
+# Run BFS
+<img width="1024" height="356" alt="Screenshot 2025-09-24 105323" src="https://github.com/user-attachments/assets/6fa6760f-08c7-47d1-b3c8-a7464d2100da" />
